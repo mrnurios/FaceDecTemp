@@ -9,9 +9,18 @@ IF EXIST venv (
     python -m venv venv
 )
 
-REM Checking packages
 call venv\Scripts\activate
-pip install -r reqs.txt
+
+REM Checking packages
+FOR /F "usebackq tokens=*" %%i IN (reqs.txt) DO (
+    pip show %%i >nul 2>&1
+    IF ERRORLEVEL 1 (
+        echo Installing package %%i...
+        pip install %%i
+    ) ELSE (
+        echo Package %%i is already installed.
+    )
+)
 
 REM Run pip install command in the virtual environment console
 python prototype.py
