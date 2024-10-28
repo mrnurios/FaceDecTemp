@@ -138,11 +138,11 @@ class Main(ctk.CTk):
         ]
 
         if not arduino_ports:
-            print("No Arduino found.")
+            # print("No Arduino found.")
+            return arduino_ports
         else:
             print("Multiple Arduinos found. Using the first one.")
-        
-        return arduino_ports
+            return arduino_ports[0]        
 
     def strt(self):
         if not self.On:
@@ -212,7 +212,7 @@ class Main(ctk.CTk):
 
         self.capdevices['Video'] = 'sample.mp4'
         self.capdevices_name.append('Video')
-        print(self.capdevices_name)
+        # print(self.capdevices_name)
 
         return self.capdevices_name
 
@@ -220,7 +220,7 @@ class Main(ctk.CTk):
         self.start.configure(state='disabled')
         if temp:
             temp.clear()
-            print('Device Released')
+            # print('Device Released')
             self.cap.release()
             self.stop1()
         else:
@@ -230,7 +230,7 @@ class Main(ctk.CTk):
         self.cammenu.configure(variable=temp_var)
         self.num_devices = self.getcapdevice()
         self.cammenu.configure(values=self.num_devices)
-        print('Devices:',self.capdevices)
+        # print('Devices:',self.capdevices)
         self.vidContain.configure(text='',width=700,height=500)
         self.start.configure(text='START',fg_color='DodgerBlue3',state='disabled')
         self.On = False
@@ -267,8 +267,8 @@ class Main(ctk.CTk):
 
         self.cammenu.configure(values=self.num_devices)
 
-        print('Device In-Use:',temp[0])
-        print('Capture Devices Remaining:',self.num_devices)
+        # print('Device In-Use:',temp[0])
+        # print('Capture Devices Remaining:',self.num_devices)
 
         self.capVid(self.capdevices.get(temp[0]))
 

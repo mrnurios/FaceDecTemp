@@ -9,7 +9,7 @@ IF EXIST venv (
     python -m venv venv
 )
 
-REM Activating Virtual Environment
+echo Activating Virtual Environment
 call venv\Scripts\activate
 
 REM Checking packages
@@ -18,8 +18,6 @@ FOR /F "usebackq tokens=*" %%i IN (reqs.txt) DO (
     IF ERRORLEVEL 1 (
         echo Installing package %%i...
         pip install %%i
-    ) ELSE (
-        echo Package %%i is already installed.
     )
 )
 
