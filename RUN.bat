@@ -9,6 +9,7 @@ IF EXIST venv (
     python -m venv venv
 )
 
+REM Activating Virtual Environment
 call venv\Scripts\activate
 
 REM Checking packages
