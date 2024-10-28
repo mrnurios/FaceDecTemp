@@ -1,0 +1,6 @@
+customtkinter
+opencv-python
+pygrabber
+pygame
+pyserial
+pillow
